@@ -6,4 +6,4 @@ select
 <include refid="Base_Column_List" />
     from student
 </select>
-这个<include refid="Base_Column_List" />会自动把上面的代码贴过来
+这个<include refid="Base_Column_List" />会自动把上面的代码贴过来.
