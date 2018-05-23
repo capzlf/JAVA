@@ -1,0 +1,53 @@
+mybatis xml 文件中对于重复出现的sql 片段可以使用标签提取出来,在使用的地方使用标签引用即可具体用法如下:
+
+<sql id="someSQL">
+        id,name
+</sql>
+<select id="selectSome" >
+        select
+       <include refid="someSQL"/>
+        from t
+ </select> 
+1
+2
+3
+4
+5
+6
+7
+8
+在中可以使用${}传入参数,如下:
+
+<sql id="someSQL">
+        ${tableName}.id,${tableName}.name
+</sql>
+<select id="selectSome" >
+        select
+       <include refid="someSQL"><property name="tableName" value="t"/></include>
+        from t
+ </select> 
+1
+2
+3
+4
+5
+6
+7
+8
+对于多个xml文件需要同时引用一段相同的 可以在某个xml 中定义这个 sql 代码片段,在需要引用的地方使用全称引用即可,例子如下:
+
+ShareMapper.xml
+<mapper namespace="com.company.ShareMapper">       
+    <sql id="someSQL">
+       id,name
+    </sql>          
+</mapper>
+
+CustomMapper.xml
+<mapper namespace="com.company.CustomMapper">       
+    <select id="selectSome" >
+        select
+       <include refid="com.company.ShareMapper.someSQL"/>
+        from t
+    </select>          
+</mapper>
