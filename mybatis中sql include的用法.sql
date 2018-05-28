@@ -40,7 +40,7 @@ CustomMapper.xml
 
 ------
 
-###mybatis中refid是什么意思
+mybatis中refid是什么意思
 1、首先定义一个sql标签，一定要定义唯一id<sql id="Base_Column_List" >name,age</sql>
 2、然后通过id引用
 <select id="selectAll">
